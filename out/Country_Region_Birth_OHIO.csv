@@ -1,0 +1,232 @@
+region_name,country_birth,new_natz_OH
+Asia,Afghanistan,153
+Europe,Albania,310
+Africa,Algeria,260
+Oceania,American Samoa,0
+Europe,Andorra,0
+Africa,Angola,7
+Americas,Anguilla,0
+Americas,Antigua and Barbuda,9
+Americas,Argentina,140
+Asia,Armenia,72
+Americas,Aruba,0
+Oceania,Australia,96
+Europe,Austria,22
+Asia,Azerbaijan,43
+Americas,Bahamas,21
+Asia,Bahrain,0
+Asia,Bangladesh,266
+Americas,Barbados,20
+Europe,Belarus,115
+Europe,Belgium,55
+Americas,Belize,12
+Africa,Benin,35
+Americas,Bermuda,0
+Asia,Bhutan,7569
+Americas,Bolivia,42
+Europe,Bosnia and Herzegovina,178
+Africa,Botswana,0
+Americas,Brazil,470
+Asia,Brunei,0
+Europe,Bulgaria,105
+Africa,Burkina Faso,76
+Asia,Burma,828
+Africa,Burundi,58
+Africa,Cabo Verde,0
+Asia,Cambodia,225
+Africa,Cameroon,516
+Americas,Canada,975
+Americas,Cayman Islands,0
+Africa,Central African Republic,16
+Africa,Chad,11
+Americas,Chile,81
+Asia,"China, People's Republic",2491
+Americas,Colombia,386
+Africa,Comoros,0
+Africa,"Congo, Democratic Republic",394
+Africa,"Congo, Republic",63
+Oceania,Cook Islands,0
+Americas,Costa Rica,71
+Africa,Cote d'Ivoire,170
+Europe,Croatia,85
+Americas,Cuba,186
+Americas,Curacao,0
+Asia,Cyprus,13
+Europe,Czechia,41
+Europe,Czechoslovakia (former),21
+Europe,Denmark,43
+Africa,Djibouti,15
+Americas,Dominica,3
+Americas,Dominican Republic,637
+Americas,Ecuador,192
+Africa,Egypt,651
+Americas,El Salvador,268
+Africa,Equatorial Guinea,0
+Africa,Eritrea,377
+Europe,Estonia,18
+Africa,Eswatini,0
+Africa,Eswatini (formerly Swaziland),0
+Africa,Ethiopia,1244
+Americas,Falkland Islands,0
+Oceania,Fiji,14
+Europe,Finland,25
+Europe,France,153
+Oceania,French Polynesia,0
+Africa,Gabon,17
+Africa,Gambia,173
+Asia,Georgia,74
+Europe,Germany,407
+Africa,Ghana,2180
+Europe,Gibraltar,0
+Europe,Greece,106
+Americas,Greenland,0
+Americas,Grenada,3
+Oceania,Guam,0
+Americas,Guatemala,254
+Africa,Guinea,308
+Africa,Guinea-Bissau,0
+Americas,Guyana,114
+Americas,Haiti,206
+Americas,Honduras,185
+Asia,Hong Kong,84
+Europe,Hungary,105
+Europe,Iceland,3
+Asia,India,5894
+Asia,Indonesia,146
+Asia,Iran,388
+Asia,Iraq,1368
+Europe,Ireland,77
+Asia,Israel,236
+Europe,Italy,249
+Americas,Jamaica,537
+Asia,Japan,144
+Asia,Jordan,950
+Asia,Kazakhstan,82
+Africa,Kenya,676
+Oceania,Kiribati,0
+Asia,"Korea, North",0
+Asia,"Korea, South",699
+Europe,Kosovo,15
+Asia,Kuwait,182
+Asia,Kyrgyzstan,69
+Asia,Laos,115
+Europe,Latvia,36
+Asia,Lebanon,436
+Africa,Lesotho,0
+Africa,Liberia,349
+Africa,Libya,83
+Europe,Liechtenstein,0
+Europe,Lithuania,56
+Europe,Luxembourg,0
+Asia,Macau,0
+Europe,Macedonia,69
+Africa,Madagascar,3
+Africa,Malawi,14
+Asia,Malaysia,93
+Asia,Maldives,0
+Africa,Mali,95
+Europe,Malta,0
+Oceania,Marshall Islands,0
+Africa,Mauritania,415
+Africa,Mauritius,4
+Americas,Mexico,2258
+Oceania,"Micronesia, Federated States",0
+Europe,Moldova,136
+Europe,Monaco,0
+Asia,Mongolia,15
+Europe,Montenegro,0
+Americas,Montserrat,0
+Africa,Morocco,477
+Africa,Mozambique,0
+Africa,Namibia,0
+Oceania,Nauru,0
+Asia,Nepal,1893
+Europe,Netherlands,89
+Europe,Netherlands Antilles (former),0
+Oceania,New Caledonia,0
+Oceania,New Zealand,40
+Americas,Nicaragua,91
+Africa,Niger,31
+Africa,Nigeria,864
+Oceania,Niue,0
+Europe,North Macedonia,24
+Europe,North Macedonia (formerly Macedonia),17
+Oceania,Northern Mariana Islands,0
+Europe,Norway,5
+Asia,Oman,0
+Asia,Pakistan,752
+Oceania,Palau,0
+Americas,Panama,74
+Oceania,Papua New Guinea,3
+Americas,Paraguay,0
+Americas,Peru,458
+Asia,Philippines,1754
+Europe,Pitcairn Islands,0
+Europe,Poland,286
+Europe,Portugal,6
+Americas,Puerto Rico,0
+Asia,Qatar,15
+Oceania,Republic of Nauru,0
+Europe,Romania,483
+Europe,Russia,557
+Africa,Rwanda,110
+Africa,Saint Helena,0
+Americas,Saint Kitts and Nevis,0
+Americas,Saint Lucia,21
+Americas,Saint Vincent and the Grenadines,3
+Oceania,Samoa,0
+Europe,San Marino,0
+Africa,Sao Tome and Principe,0
+Asia,Saudi Arabia,186
+Africa,Senegal,460
+Europe,Serbia,74
+Europe,Serbia and Montenegro (former),105
+Africa,Seychelles,0
+Africa,Sierra Leone,425
+Asia,Singapore,10
+Americas,Sint Maarten,0
+Europe,Slovakia,34
+Europe,Slovenia,0
+Oceania,Solomon Islands,0
+Africa,Somalia,2933
+Africa,South Africa,201
+Africa,South Sudan,0
+Europe,Soviet Union (former),202
+Europe,Spain,99
+Asia,Sri Lanka,148
+Africa,Sudan,253
+Americas,Suriname,0
+Africa,Swaziland,0
+Europe,Sweden,52
+Europe,Switzerland,25
+Asia,Syria,476
+Asia,Taiwan,208
+Asia,Tajikistan,4
+Africa,Tanzania,153
+Asia,Thailand,408
+Asia,Timor-Leste,0
+Africa,Togo,144
+Oceania,Tonga,4
+Global,Total,60015
+Americas,Trinidad and Tobago,115
+Africa,Tunisia,50
+Asia,Turkey,308
+Asia,Turkmenistan,4
+Americas,Turks and Caicos Islands,0
+Oceania,Tuvalu,0
+Africa,Uganda,91
+Europe,Ukraine,1068
+Asia,United Arab Emirates,79
+Europe,United Kingdom,890
+Americas,United States,5
+Americas,Uruguay,27
+Asia,Uzbekistan,395
+Oceania,Vanuatu,0
+Americas,Venezuela,350
+Asia,Vietnam,1076
+Americas,"Virgin Islands, British",0
+Americas,"Virgin Islands, U.S.",0
+Africa,Western Sahara,0
+Asia,Yemen,56
+Africa,Zambia,42
+Africa,Zimbabwe,115
