@@ -22,7 +22,7 @@ ohio <- temp %>% select("Region.Name", "country_birth", "OHIO") %>%
 ###### ACS DATA ######
 # load acs data
 if (!require("ipumsr")) stop("Reading IPUMS data into R requires the ipumsr package. It can be installed using the following command: install.packages('ipumsr')")
-ddi <- read_ipums_ddi("data/usa_00008.xml")
+ddi <- read_ipums_ddi("data/usa_00012.xml")
 data <- read_ipums_micro(ddi)
 
 # add in occupation code names
@@ -47,12 +47,12 @@ acs_OH20_imm <- acs_OH20 %>% subset(BPL > 120)
 acs_OH20_natz <- acs_OH20 %>% subset(CITIZEN == 2) 
 acs_OH20_newNatz <- acs_OH20_natz %>% subset(YRNATUR >=2016)
 
-
 ###### ANALYSIS ###### 
 #============================================================================
 # OHIO POPULATION COUNTS
 #============================================================================
 ###### CALCULATE NUMBER OF IMMIGRANTS, TOTAL NATURALIZED IN OHIO ######
+sum(acs_OH20$PERWT) # ohio population
 sum(acs_OH20_imm$PERWT) # number of immigrants in ohio
 sum(acs_OH20_natz$PERWT) # number of naturalized citizens in ohio
 sum(acs_OH20_newNatz$PERWT)  # number of newly naturalized citizens in ohio
@@ -73,6 +73,10 @@ sum(incwage$INCWAGE * incwage$PERWT)
 n_newnatz = 60015
 natz_by_region <- as.data.frame(ohio %>% group_by(Region.Name) %>% summarise(Freq = sum(OHIO)) %>%
   mutate(Percentage = Freq/n_newnatz))
+View(natz_by_region)
+
+# top ten country of origins
+view(ohio %>% arrange(desc(OHIO)))
 
 # look for ohio's position relative to other state's naturalizations in each region
 View(by_regions %>% select(c("state", "Africa")))

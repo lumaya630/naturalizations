@@ -121,5 +121,5 @@ senate_margins <- senate_margins %>%
 # =================================================
 # EXPORT
 # =================================================
-write.csv(pres_margins, "out/pres_margins.csv")
-write.csv(senate_margins, "out/senate_margins.csv")
+write.csv(pres_margins, "out/pres_margins.csv", row.names = F)
+write.csv(senate_margins, "out/senate_margins.csv", row.names = F)

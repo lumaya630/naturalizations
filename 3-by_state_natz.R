@@ -91,6 +91,10 @@ for (i in 1:length(colnames(voting_states)[-c(1)])){
 names(swayable) <- colnames(voting_states)[-c(1)]
 swayable %>% subset(swayable > 0)
 
+swayable_states <- names(swayable[swayable>=1])
+View(voting_states %>% select(c("country_birth", swayable_states)))
+
+
 # define almost swayable as the newly naturalized population is
 # within 95 percent of the margin
 almost_swayable <- rep(NA, 51)
@@ -98,7 +102,7 @@ for (i in 1:length(colnames(voting_states)[-c(1)])){
   col <- colnames(voting_states)[-c(1)][i]
   margin <- pres_2020_summary[pres_2020_summary$state == col,]$margincount_2020
   margin_adj <- pres_2020_summary[pres_2020_summary$state == col,]$margincount_2020 * 0.95
-  origins <- sum((voting_states[,col] > margin_adj), na.rm = T)
+  origins <- sum((voting_states[,col] > margin_adj & voting_states[,col] < margin), na.rm = T)
   almost_swayable[i] <- origins
 }
 
@@ -151,8 +155,14 @@ by_regions = data.frame(as.data.frame(t(by_regions))[-1,]) %>%
 by_regions <- by_regions %>% mutate(state = rownames(by_regions))
 rownames(by_regions) <- 1:57
 colnames(by_regions) = c(rownames[1:6],"Unknown", "state")
-by_regions <- by_regions %>% select(c(state, Africa, Americas, Asia, Europe, Oceania, Unknown, Global))
+by_regions <- by_regions %>% select(c(state, Africa, Americas, Asia, Europe, Oceania, Unknown, Global)) %>%
+  mutate(
+    state = gsub( "\\.", " ", state),
+    state = str_to_title(state)
+  )
 
+sub(pattern = "\\.", replacement = " ", "hi.there")
+?gsub
 # see top states for each region/vice versa
 View(by_regions)
 
@@ -160,12 +170,17 @@ View(by_regions)
 regions_summary <- by_regions[1,]
 colnames(regions_summary) <- c("state", "Africa" ,  "Americas", "Asia" ,    "Europe"   ,"Oceania" , "Unknown", "Global") 
 regions_summary = regions_summary %>% select(-c("Global", "state"))
-prop.table(regions_summary)
+View(prop.table(regions_summary))
+
+# summary transposed
+states <- (by_regions$state)
+by_regions_t <- (t(by_regions)[-c(1),])
+colnames(by_regions_t) <- states
 
 # =============================================================
 # EXPORT
 # =============================================================
 # export the temp dataframe (countries of birth by state (and includes regional info))
 write.csv(temp, "out/Natz_CountryBirth_by_State.csv", row.names = F)
-write.csv(by_regions, "out/Natz_RegionBirth_by_State.csv", row.names = F)
+write.csv(by_regions, "out/Table1.csv", row.names = F)
 
