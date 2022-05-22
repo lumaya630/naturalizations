@@ -15,14 +15,14 @@ foreign_born <- data %>% subset(BPL > 120)
 # group_by state
 statefip_labels <- data.frame(STATEFIP = attributes(foreign_born$STATEFIP)$labels) %>% 
   rownames_to_column("state")
-foreign_by_state <- foreign_born %>% group_by(STATEFIP) %>% 
-  ummarise(n_foreign_born = sum(PERWT)) %>% 
+foreign_by_state <- data %>% group_by(STATEFIP) %>% 
+  summarise(p_foreign_born = sum((BPL > 120) * PERWT)/sum(PERWT)) %>% 
   left_join(statefip_labels, by = "STATEFIP")
 
 # merge into pres margin data
 politically_impt <- pres_margins %>% 
   left_join(foreign_by_state %>% 
-              select(c(state, n_foreign_born)), by = "state")
+              select(c(state, p_foreign_born)), by = "state")
 
 # merge in battleground scores from cook report
 cook_report <- read.csv("data/politically_impt_states.csv")
