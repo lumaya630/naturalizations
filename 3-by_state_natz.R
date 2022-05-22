@@ -110,9 +110,13 @@ names(almost_swayable) <- colnames(voting_states)[-c(1)]
 almost_swayable %>% subset(almost_swayable > 0)
 
 # SENATE ELECTION
-newNatz <- colSums(voting_states %>% select(-c(country_birth)))
+newNatz <-voting_states %>% subset(country_birth == "Total")
 names(newNatz) <- gsub("\\.", " ", names(newNatz))
-newNatz <- data.frame(state = names(newNatz), newNatz = newNatz)
+
+states = names(newNatz)[-c(1)]
+newNatz = as.data.frame(t(newNatz[, -c(1)])) %>% rename(newNatz = "210")  %>% 
+  mutate(state = states)
+
 senate_swayable <- senate_margins %>% left_join(newNatz, by = "state")
 election_2022 <- c("ARIZONA", "COLORADO", "FLORIDA", "GEORGIA", 
                    "MONTANA", "NORTH CAROLINA", "NEW HAMPSHIRE", 'NEVADA',
