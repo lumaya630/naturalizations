@@ -69,6 +69,7 @@ temp <- temp %>% mutate(
     country_birth == "Total" ~ "Global",
     TRUE ~ Region.Name)
 )
+
 View(temp %>% subset(is.na(Region.Name)))
 
 # ============================
@@ -186,5 +187,5 @@ colnames(by_regions_t) <- states
 # =============================================================
 # export the temp dataframe (countries of birth by state (and includes regional info))
 write.csv(temp, "out/Natz_CountryBirth_by_State.csv", row.names = F)
-write.csv(by_regions, "out/Table1.csv", row.names = F)
+write.csv(by_regions, "out/natz_by_state_regions.csv", row.names = F)
 

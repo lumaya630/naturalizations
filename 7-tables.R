@@ -42,6 +42,30 @@ for (state in colnames(temp)[3:57]){
              col.names = TRUE, row.names = FALSE, append = TRUE)
 }
 
+# table 7
+by_regions <- read.csv("out/natz_by_state_regions.csv")
+projected_natz <- read.csv("out/final tables/appendix-table-4.csv")
+pis <- c("Georgia", "Arizona", "Nevada", "Pennsylvania", "Florida", "North Carolina", 
+         "Wisconsin", "Texas", "Michigan", "Virginia", "Total")
+
+natz_pis <- by_regions %>% subset(state %in% pis & state !="Total") %>% 
+  mutate(state = factor(state, levels = pis)) %>%
+  arrange(state)
+
+natz_pis <- natz_pis %>% rename(Total_2014_2018 = Global) %>% 
+  left_join(projected_natz %>% 
+              select(c(State, Naturalized.2016.2022)), by = c("state" = "State")) %>%
+  rename(Total_2016_2022 = Naturalized.2016.2022) %>%
+  mutate(Total_2016_2022 = as.numeric(Total_2016_2022))
+
+
+natz_pis <- rbind(natz_pis, c("Total", colSums(natz_pis[,2:9])))
+
+write.csv(natz_pis, "out/Table7.csv", row.names = F)
+
+# table 8
+
+
 # table 9
 for (region in colnames(by_regions)[2:6]){
   top15 <- by_regions %>% select(c(state, !!as.name(region))) %>% 
