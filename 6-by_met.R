@@ -115,8 +115,51 @@ met_region <- met_region %>% select(-c(MET2013))
 write.csv(met_region, "out/Table10.csv", row.names = F)
 
 
+met_region <- read.csv("out/final tables/appendix-table-10.csv")
 # OHIO
 ohio <- met_region %>% filter(grepl("OH", MET2013_NAME))
 View(data.frame(ohio))
            
+# GA
+ga <- met_region %>% filter(grepl("GA", MET2013_NAME))
+View(as.data.frame(ga))
+
+# AZ
+az <- met_region %>% filter(grepl("AZ", MET2013_NAME))
+View(as.data.frame(az))
+
+# NV
+nv <- met_region %>% filter(grepl("NV", MET2013_NAME))
+View(as.data.frame(nv))
+
+# PA
+pa <- met_region %>% filter(grepl("PA", MET2013_NAME))
+View(as.data.frame(pa))
+
+# FL
+fl <- met_region %>% filter(grepl("FL", MET2013_NAME))
+View(as.data.frame(fl))
+
+# NC
+nC <- met_region %>% filter(grepl("NC", MET2013_NAME))
+View(as.data.frame(nC))
+
+# WI
+wi <- met_region %>% filter(grepl("WI", MET2013_NAME))
+View(as.data.frame(wi))
+
+# TX
+tx <- met_region %>% filter(grepl("TX", MET2013_NAME))
+View(as.data.frame(tx))
+
+# MI
+mi <- met_region %>% filter(grepl("MI", MET2013_NAME))
+View(as.data.frame(mi))
+
+# VA
+va <- met_region %>% filter(grepl("VA", MET2013_NAME))
+View(as.data.frame(va))
+
+
+
            

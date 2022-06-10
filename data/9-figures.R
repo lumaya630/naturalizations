@@ -5,12 +5,12 @@ library(ggrepel)
 library(urbnmapr)
 library(sf)
 
-natz_gender_age <- read_xlsx("out/final tables/Table2_3.xlsx", sheet = "Table3")
+natz_gender_age <- read.csv("out/final tables/appendix-table-3.csv")
 # ==============
 # naturalizations by gender
 data <- data.frame(gender = c("Female", "Male"), 
            natz  = c((natz_gender_age %>% pull(Female))[1], (natz_gender_age %>% pull(Male))[1]),
-           natz_p = c((natz_gender_age %>% pull(`F (%)`))[1], (natz_gender_age %>% pull(`M(%)`))[1])) %>%
+           natz_p = c((natz_gender_age %>% pull(`F....`))[1], (natz_gender_age %>% pull(`M...`))[1])) %>%
   mutate(
     natz = as.numeric(natz),
     natz_p = as.numeric(natz_p)
@@ -116,12 +116,80 @@ map_state <- function(by_state, relevant_states, high_color, title){
   # return!
   return(out)
 }
+
+
+# only include the 50 states
+states <- by_state %>% subset(! (state %in% 
+                                   c("Total", "U S  Territories1", "U S  Armed Services Posts", "Guam", "Puerto Rico", "Unknown")) )%>% 
+  pull(state)
+
+# create a dataframe of all the states
+state_names = data.frame(state = states)
+
+# create a temp data frame with lat/long measurements for each state
+test <- state_names %>%
+  left_join(urbnmapr::states, by = c("state" = "state_name")) %>%
+  left_join(by_state %>% select(state, Global), by = "state" ) %>%
+  # create new value column indicating if each state should be highlights (0,1)
+  mutate(
+    relevant = case_when( state %in% top_ten ~ 0,
+                          TRUE ~ as.numeric(Global))
+  )
+
+heatmap_state <- function(by_state, relevant_states, high_color, title){
+  # only include the 50 states
+  states <- by_state %>% subset(! (state %in% 
+                                     c("Total", "U S  Territories1", "U S  Armed Services Posts", "Guam", "Puerto Rico", "Unknown")) )%>% 
+    pull(state)
+  
+  # create a dataframe of all the states
+  state_names = data.frame(state = states)
+  
+  # create a temp data frame with lat/long measurements for each state
+  test <- state_names %>%
+    left_join(urbnmapr::states, by = c("state" = "state_name")) %>%
+    left_join(by_state %>% select(state, Global), by = "state" ) %>%
+    # create new value column indicating if each state should be highlights (0,1)
+    mutate(
+      relevant = case_when( state %in% relevant_states ~ as.numeric(Global),
+                            TRUE ~ 0)
+    )
+  
+  # get positions for labels
+  state_labels <- get_urbn_labels(map = "states")
+  
+  # plot map
+  out <- ggplot(test, mapping = aes(long, lat, group = group, fill = relevant)) +
+    geom_polygon(color = "#ffFFff", size = .25) + # line color and width
+    geom_text(data = state_labels, aes(long, lat, label = state_abbv), inherit.aes=FALSE, size = 3) +
+    scale_fill_gradient(
+      low = "#cbd2d4",
+      high = high_color,
+      guide = guide_colorbar(title.position = "top")) +
+    coord_map(projection = "albers", lat0 = 39, lat1 = 45) +
+    theme(legend.title = element_text(),
+          legend.key.width = unit(.5, "in"),
+          legend.position = "none",
+          rect = element_blank(),
+          axis.text.x = element_blank(),
+          axis.title.x = element_blank(),
+          axis.text.y = element_blank(),
+          axis.title.y = element_blank(),
+          axis.ticks = element_blank()) +
+    ggtitle(title) + 
+    theme(plot.title = element_text(face ="bold", hjust = 0.5))
+  
+  # return!
+  return(out)
+}
   
 # highest number of newly natz
-by_state <- read.csv("out/final tables/Table1.csv")
+by_state <- read.csv("out/final tables/appendix-table-1.csv")
 top_ten <- by_state %>% arrange(by = desc(Global)) %>% slice(2:11) %>% pull(state)
 map_state(by_state, top_ten, "#3f93a6", "HIGHEST NUMBER OF NEWLY NATURALIZED BY STATE")
+heatmap_state(by_state, top_ten, "#e34a42", "")
 
+by_state$Global
 # STATES OF IMPACT BASED ON 2020 PRES ELECTIONS
 pres_elections <- c("Georgia", "Arizona", "Nevada", "Pennsylvania", "Florida")
 map_state(by_state, pres_elections, "#3f93a6", "")
@@ -134,6 +202,7 @@ map_state(by_state, senate_elections, "#e34a42", "")
 pis <- c("Georgia", "Arizona", "Nevada", "Pennsylvania", "Florida", "North Carolina", 
          "Wisconsin", "Texas", "Michigan", "Virginia")
 map_state(by_state, pis, "#3f93a6", "" )
+
 
 # ============
 # world map
